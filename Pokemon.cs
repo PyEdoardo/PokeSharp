@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokeSharp
 {
@@ -10,9 +6,21 @@ namespace PokeSharp
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Tipo { get; set; }
-        public double altura { get; set; }
+        public List<string> Tipo { get; set; }
+        public double Altura { get; set; }
+        public double Peso { get; set; }
+        public List<string> Golpes { get; set; }
+        public string UrlImagem { get; set; }
 
-        public double peso { get; set; }
+        public Pokemon(int id, string nome, List<string> tipo, double altura, double peso, List<string> golpes, string urlImagem)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.Tipo = tipo;
+            this.Altura = altura;
+            this.Peso = peso;
+            this.Golpes = golpes;
+            this.UrlImagem = urlImagem;
+        }
     }
 }

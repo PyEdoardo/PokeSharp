@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CkMQ8cPI+i0=",
+  "dgSpecHash": "AJZA6FoCVjU=",
   "success": true,
   "projectFilePath": "C:\\Users\\edoar\\PokeSharp\\PokeSharp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\edoar\\.nuget\\packages\\materialskin.2\\2.3.1\\materialskin.2.2.3.1.nupkg.sha512"
+  ],
   "logs": []
 }
