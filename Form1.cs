@@ -6,18 +6,20 @@ namespace PokeSharp
 {
     public partial class Form1 : MaterialForm
     {
+        private readonly MaterialSkinManager materialSkinManager;
         public Form1()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK; // ou LIGHT
 
             materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.BlueGrey800, Primary.BlueGrey900,
-                Primary.BlueGrey500, Accent.LightBlue200,
-                TextShade.WHITE);
-            this.Text = "PokeSharp";
+                Primary.Blue600, Primary.Blue700,
+                Primary.Blue200, Accent.LightBlue200,
+                TextShade.WHITE
+            );
+
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialCard1.Visible = false;
         }
 
@@ -48,6 +50,7 @@ namespace PokeSharp
                 MessageBox.Show("Erro ao carregar a imagem: " + ex.Message);
             }
         }
+
         private async void materialButton1_Click(object sender, EventArgs e)
         {
             string NomePokemon = textBoxNome.Text.Trim().ToLower();
@@ -87,6 +90,26 @@ namespace PokeSharp
         private void materialCard1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void textBoxNome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                materialButton1_Click(sender, e);
+            }
+        }
+
+        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialSwitch1.Checked)
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            }
+            else
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            }
         }
     }
 }
