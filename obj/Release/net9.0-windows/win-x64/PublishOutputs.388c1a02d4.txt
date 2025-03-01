@@ -1,0 +1,2 @@
+C:\Users\edoar\PokeSharp\bin\Release\net9.0-windows\win-x64\publish\PokeSharp.pdb
+C:\Users\edoar\PokeSharp\bin\Release\net9.0-windows\win-x64\publish\PokeSharp.exe

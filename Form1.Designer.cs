@@ -70,7 +70,7 @@
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
             materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(158, 36);
+            materialButton1.Size = new Size(97, 36);
             materialButton1.TabIndex = 9;
             materialButton1.Text = "Procurar";
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -99,9 +99,9 @@
             labelNome.Location = new Point(17, 14);
             labelNome.MouseState = MaterialSkin.MouseState.HOVER;
             labelNome.Name = "labelNome";
-            labelNome.Size = new Size(107, 19);
+            labelNome.Size = new Size(47, 19);
             labelNome.TabIndex = 11;
-            labelNome.Text = "materialLabel3";
+            labelNome.Text = "Nome:";
             // 
             // pictureBox1
             // 
@@ -131,9 +131,9 @@
             labelAltura.Location = new Point(17, 63);
             labelAltura.MouseState = MaterialSkin.MouseState.HOVER;
             labelAltura.Name = "labelAltura";
-            labelAltura.Size = new Size(107, 19);
+            labelAltura.Size = new Size(51, 19);
             labelAltura.TabIndex = 14;
-            labelAltura.Text = "materialLabel1";
+            labelAltura.Text = "Altura: ";
             // 
             // labelPeso
             // 
@@ -143,9 +143,9 @@
             labelPeso.Location = new Point(17, 114);
             labelPeso.MouseState = MaterialSkin.MouseState.HOVER;
             labelPeso.Name = "labelPeso";
-            labelPeso.Size = new Size(107, 19);
+            labelPeso.Size = new Size(44, 19);
             labelPeso.TabIndex = 15;
-            labelPeso.Text = "materialLabel3";
+            labelPeso.Text = "Peso: ";
             // 
             // materialCard1
             // 
