@@ -38,7 +38,7 @@ namespace PokeSharp
                     foreach (JsonElement typeElement in root.GetProperty("types").EnumerateArray())
                     {
                         string tipo = typeElement.GetProperty("type").GetProperty("name").GetString();
-                        tipos.Add(tipo);
+                        tipos.Add($"{tipo} ");
                     }
 
                     List<string> golpes = new();
@@ -47,7 +47,7 @@ namespace PokeSharp
                     {
                         if (count >= 5) break;
                         string golpe = moveElement.GetProperty("move").GetProperty("name").GetString();
-                        golpes.Add($"{count + 1}: " + golpe);
+                        golpes.Add($"{count + 1}: {golpe}");
                         count++;
                     }
 

@@ -28,104 +28,172 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxNome = new TextBox();
-            labelPokemon = new Label();
-            labelNome = new Label();
-            labelTipos = new Label();
-            labelAltura = new Label();
-            labelPeso = new Label();
-            button1 = new Button();
+            textBoxNome = new MaterialSkin.Controls.MaterialTextBox();
+            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            labelNome = new MaterialSkin.Controls.MaterialLabel();
+            pictureBox1 = new PictureBox();
+            labelTipos = new MaterialSkin.Controls.MaterialLabel();
+            labelAltura = new MaterialSkin.Controls.MaterialLabel();
+            labelPeso = new MaterialSkin.Controls.MaterialLabel();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            materialCard1.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxNome
             // 
-            textBoxNome.Location = new Point(19, 120);
+            textBoxNome.AnimateReadOnly = false;
+            textBoxNome.BorderStyle = BorderStyle.None;
+            textBoxNome.Depth = 0;
+            textBoxNome.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            textBoxNome.LeadingIcon = null;
+            textBoxNome.Location = new Point(19, 165);
+            textBoxNome.MaxLength = 50;
+            textBoxNome.MouseState = MaterialSkin.MouseState.OUT;
+            textBoxNome.Multiline = false;
             textBoxNome.Name = "textBoxNome";
-            textBoxNome.Size = new Size(138, 23);
-            textBoxNome.TabIndex = 0;
+            textBoxNome.Size = new Size(128, 50);
+            textBoxNome.TabIndex = 7;
+            textBoxNome.Text = "";
+            textBoxNome.TrailingIcon = null;
             // 
-            // labelPokemon
+            // materialButton1
             // 
-            labelPokemon.AutoSize = true;
-            labelPokemon.Location = new Point(19, 92);
-            labelPokemon.Name = "labelPokemon";
-            labelPokemon.Size = new Size(155, 15);
-            labelPokemon.TabIndex = 1;
-            labelPokemon.Text = "Digite o Nome do Pokemon";
+            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton1.Depth = 0;
+            materialButton1.HighEmphasis = true;
+            materialButton1.Icon = null;
+            materialButton1.Location = new Point(19, 236);
+            materialButton1.Margin = new Padding(4, 6, 4, 6);
+            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton1.Name = "materialButton1";
+            materialButton1.NoAccentTextColor = Color.Empty;
+            materialButton1.Size = new Size(158, 36);
+            materialButton1.TabIndex = 9;
+            materialButton1.Text = "Procurar";
+            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton1.UseAccentColor = false;
+            materialButton1.UseVisualStyleBackColor = true;
+            materialButton1.Click += materialButton1_Click;
+            // 
+            // materialLabel2
+            // 
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(19, 122);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(246, 19);
+            materialLabel2.TabIndex = 8;
+            materialLabel2.Text = "Digite o Nome do Pokemon abaixo";
+            materialLabel2.Click += materialLabel1_Click;
             // 
             // labelNome
             // 
             labelNome.AutoSize = true;
-            labelNome.Location = new Point(319, 76);
+            labelNome.Depth = 0;
+            labelNome.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelNome.Location = new Point(17, 14);
+            labelNome.MouseState = MaterialSkin.MouseState.HOVER;
             labelNome.Name = "labelNome";
-            labelNome.Size = new Size(100, 15);
-            labelNome.TabIndex = 2;
-            labelNome.Text = "Nome Pokemon: ";
+            labelNome.Size = new Size(107, 19);
+            labelNome.TabIndex = 11;
+            labelNome.Text = "materialLabel3";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(183, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(239, 150);
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
             // 
             // labelTipos
             // 
             labelTipos.AutoSize = true;
-            labelTipos.Location = new Point(319, 128);
+            labelTipos.Depth = 0;
+            labelTipos.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelTipos.Location = new Point(17, 166);
+            labelTipos.MouseState = MaterialSkin.MouseState.HOVER;
             labelTipos.Name = "labelTipos";
-            labelTipos.Size = new Size(42, 15);
-            labelTipos.TabIndex = 3;
-            labelTipos.Text = "Tipos: ";
+            labelTipos.Size = new Size(45, 19);
+            labelTipos.TabIndex = 13;
+            labelTipos.Text = "Tipos:";
             // 
             // labelAltura
             // 
             labelAltura.AutoSize = true;
-            labelAltura.Location = new Point(319, 178);
+            labelAltura.Depth = 0;
+            labelAltura.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelAltura.Location = new Point(17, 63);
+            labelAltura.MouseState = MaterialSkin.MouseState.HOVER;
             labelAltura.Name = "labelAltura";
-            labelAltura.Size = new Size(45, 15);
-            labelAltura.TabIndex = 4;
-            labelAltura.Text = "Altura: ";
+            labelAltura.Size = new Size(107, 19);
+            labelAltura.TabIndex = 14;
+            labelAltura.Text = "materialLabel1";
             // 
             // labelPeso
             // 
             labelPeso.AutoSize = true;
-            labelPeso.Location = new Point(319, 230);
+            labelPeso.Depth = 0;
+            labelPeso.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelPeso.Location = new Point(17, 114);
+            labelPeso.MouseState = MaterialSkin.MouseState.HOVER;
             labelPeso.Name = "labelPeso";
-            labelPeso.Size = new Size(38, 15);
-            labelPeso.TabIndex = 5;
-            labelPeso.Text = "Peso: ";
+            labelPeso.Size = new Size(107, 19);
+            labelPeso.TabIndex = 15;
+            labelPeso.Text = "materialLabel3";
             // 
-            // button1
+            // materialCard1
             // 
-            button1.Location = new Point(48, 149);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 6;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(labelNome);
+            materialCard1.Controls.Add(pictureBox1);
+            materialCard1.Controls.Add(labelPeso);
+            materialCard1.Controls.Add(labelTipos);
+            materialCard1.Controls.Add(labelAltura);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(328, 87);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(422, 281);
+            materialCard1.TabIndex = 16;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(labelPeso);
-            Controls.Add(labelAltura);
-            Controls.Add(labelTipos);
-            Controls.Add(labelNome);
-            Controls.Add(labelPokemon);
+            Controls.Add(materialCard1);
+            Controls.Add(materialButton1);
+            Controls.Add(materialLabel2);
             Controls.Add(textBoxNome);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            materialCard1.ResumeLayout(false);
+            materialCard1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBoxNome;
-        private Label labelPokemon;
-        private Label labelNome;
-        private Label labelTipos;
-        private Label labelAltura;
-        private Label labelPeso;
         private Button button1;
+        private MaterialSkin.Controls.MaterialTextBox textBoxNome;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel labelNome;
+        private PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialLabel labelTipos;
+        private MaterialSkin.Controls.MaterialLabel labelAltura;
+        private MaterialSkin.Controls.MaterialLabel labelPeso;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }

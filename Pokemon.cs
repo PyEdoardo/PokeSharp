@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Globalization;
 namespace PokeSharp
 {
     class Pokemon
@@ -21,6 +21,12 @@ namespace PokeSharp
             this.Peso = peso;
             this.Golpes = golpes;
             this.UrlImagem = urlImagem;
+        }
+
+        public string deixarMaiusculo(string texto)
+        {
+            TextInfo global = CultureInfo.CurrentCulture.TextInfo;
+            return global.ToTitleCase(texto.ToLower());
         }
     }
 }
