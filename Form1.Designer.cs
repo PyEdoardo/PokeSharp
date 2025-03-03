@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             textBoxNome = new MaterialSkin.Controls.MaterialTextBox();
             materialButton1 = new MaterialSkin.Controls.MaterialButton();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -37,9 +38,16 @@
             labelAltura = new MaterialSkin.Controls.MaterialLabel();
             labelPeso = new MaterialSkin.Controls.MaterialLabel();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            comboBox1 = new ComboBox();
+            statusStrip1 = new StatusStrip();
+            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            temasToolStripMenuItem = new ToolStripMenuItem();
+            temaBrancoToolStripMenuItem = new ToolStripMenuItem();
+            temaEscuroToolStripMenuItem = new ToolStripMenuItem();
+            resetarCacheToolStripMenuItem = new ToolStripMenuItem();
+            githubDoDesenvolvedorToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             materialCard1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxNome
@@ -167,20 +175,66 @@
             materialCard1.Size = new Size(422, 281);
             materialCard1.TabIndex = 16;
             // 
-            // comboBox1
+            // statusStrip1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(629, 385);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 17;
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            statusStrip1.Location = new Point(3, 425);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(794, 22);
+            statusStrip1.TabIndex = 17;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { temasToolStripMenuItem, resetarCacheToolStripMenuItem, githubDoDesenvolvedorToolStripMenuItem });
+            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
+            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new Size(29, 20);
+            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // temasToolStripMenuItem
+            // 
+            temasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temaBrancoToolStripMenuItem, temaEscuroToolStripMenuItem });
+            temasToolStripMenuItem.Name = "temasToolStripMenuItem";
+            temasToolStripMenuItem.Size = new Size(223, 22);
+            temasToolStripMenuItem.Text = "Temas";
+            // 
+            // temaBrancoToolStripMenuItem
+            // 
+            temaBrancoToolStripMenuItem.Name = "temaBrancoToolStripMenuItem";
+            temaBrancoToolStripMenuItem.Size = new Size(143, 22);
+            temaBrancoToolStripMenuItem.Text = "Tema Branco";
+            temaBrancoToolStripMenuItem.Click += temaBrancoToolStripMenuItem_Click;
+            // 
+            // temaEscuroToolStripMenuItem
+            // 
+            temaEscuroToolStripMenuItem.Name = "temaEscuroToolStripMenuItem";
+            temaEscuroToolStripMenuItem.Size = new Size(143, 22);
+            temaEscuroToolStripMenuItem.Text = "Tema Escuro";
+            temaEscuroToolStripMenuItem.Click += temaEscuroToolStripMenuItem_Click;
+            // 
+            // resetarCacheToolStripMenuItem
+            // 
+            resetarCacheToolStripMenuItem.Name = "resetarCacheToolStripMenuItem";
+            resetarCacheToolStripMenuItem.Size = new Size(223, 22);
+            resetarCacheToolStripMenuItem.Text = "Resetar Cache";
+            resetarCacheToolStripMenuItem.Click += resetarCacheToolStripMenuItem_Click;
+            // 
+            // githubDoDesenvolvedorToolStripMenuItem
+            // 
+            githubDoDesenvolvedorToolStripMenuItem.Name = "githubDoDesenvolvedorToolStripMenuItem";
+            githubDoDesenvolvedorToolStripMenuItem.Size = new Size(223, 22);
+            githubDoDesenvolvedorToolStripMenuItem.Text = "Github do Desenvolvedor ❤️";
+            githubDoDesenvolvedorToolStripMenuItem.Click += githubDoDesenvolvedorToolStripMenuItem_Click_1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(comboBox1);
+            Controls.Add(statusStrip1);
             Controls.Add(materialCard1);
             Controls.Add(materialButton1);
             Controls.Add(materialLabel2);
@@ -191,6 +245,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -205,6 +261,12 @@
         private MaterialSkin.Controls.MaterialLabel labelAltura;
         private MaterialSkin.Controls.MaterialLabel labelPeso;
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private ComboBox comboBox1;
+        private StatusStrip statusStrip1;
+        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripMenuItem temasToolStripMenuItem;
+        private ToolStripMenuItem resetarCacheToolStripMenuItem;
+        private ToolStripMenuItem githubDoDesenvolvedorToolStripMenuItem;
+        private ToolStripMenuItem temaBrancoToolStripMenuItem;
+        private ToolStripMenuItem temaEscuroToolStripMenuItem;
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PokeSharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1755ccea953a28893d394aaa0b8e58aba847f088")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b70462adca197113a49a0c22e2230c5eab447b77")]
 [assembly: System.Reflection.AssemblyProductAttribute("PokeSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PokeSharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -30,7 +30,7 @@ namespace PokeSharp
                     JsonElement root = doc.RootElement;
 
                     int id = root.GetProperty("id").GetInt32();
-                    string nomePokemon = $"Nome: {root.GetProperty("name").GetString()}";
+                    string nomePokemon = root.GetProperty("name").GetString();
                     double altura = root.GetProperty("height").GetDouble() / 10;
                     double peso = root.GetProperty("weight").GetDouble() / 10;
                     byte[] imagem;

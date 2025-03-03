@@ -16,7 +16,7 @@ namespace PokeSharp
                 string criarTabela = @"
                 CREATE TABLE IF NOT EXISTS Pokemon (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nome TEXT NOT NULL,
+                    Nome TEXT NOT NULL UNIQUE,
                     Tipos TEXT NOT NULL,
                     Altura REAL NOT NULL,
                     Peso REAL NOT NULL,
@@ -35,7 +35,7 @@ namespace PokeSharp
             using (var connection = new SQLiteConnection(_stringConexao))
             {
                 connection.Open();
-                using (var transaction = connection.BeginTransaction()) // Inicia uma transação
+                using (var transaction = connection.BeginTransaction())
                 {
                     string insertQuery = @"
                 INSERT INTO Pokemon (Nome, Tipos, Altura, Peso, Golpes, Imagem) 
@@ -63,11 +63,25 @@ namespace PokeSharp
                         }
                     }
 
-                    transaction.Commit(); // Confirma a inserção no banco
+                    transaction.Commit();
                 }
             }
         }
+        public bool verificarSeExiste(string nome)
+        {
+            using (var linkBanco = new SQLiteConnection(_stringConexao))
+            {
+                linkBanco.Open();
 
+                string query = @"SELECT COUNT(*) FROM Pokemon WHERE Nome = @Nome";
+                using (var comando = new SQLiteCommand(query, linkBanco))
+                {
+                    comando.Parameters.AddWithValue("@Nome", nome);
+                    long contador = (long)comando.ExecuteScalar();
+                    return contador > 0;
+                }
+            }
+        }
 
         public Pokemon getPokemonNome(string nomePokemon)
         {
@@ -97,7 +111,6 @@ namespace PokeSharp
                         }
                     }
                 }
-
             }
             return null;
         }

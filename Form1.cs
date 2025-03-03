@@ -1,9 +1,7 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
-using System.ComponentModel;
-using System.Net;
-using System.Threading.Tasks;
-using System.Web;
+using System;
+using System.Diagnostics;
 
 namespace PokeSharp
 {
@@ -65,7 +63,6 @@ namespace PokeSharp
                 return;
             }
 
-            // Verifica se 'banco' está inicializado
             if (banco == null)
             {
                 mostrarMaterialbar("Erro: Banco de dados não inicializado.");
@@ -78,7 +75,10 @@ namespace PokeSharp
             {
                 Request request = new Request();
                 Pokemon pokemonSalvo = await request.GetPokemon(NomePokemon);
-
+                if (banco.verificarSeExiste(NomePokemon))
+                {
+                    return;
+                }
                 if (pokemonSalvo != null)
                 {
                     banco.AdicionarPokemon(pokemonSalvo);
@@ -132,6 +132,31 @@ namespace PokeSharp
         private void githubDoDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void temaEscuroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+        }
+
+        private void temaBrancoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+        }
+
+        private void githubDoDesenvolvedorToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://github.com/PyEdoardo/PokeSharp",
+                UseShellExecute = true
+            });
+        }
+
+        private void resetarCacheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            banco.apagarCache();
+            Console.WriteLine("Pokemons Apagados");
         }
     }
 }
