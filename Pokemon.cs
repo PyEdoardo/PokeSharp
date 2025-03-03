@@ -12,8 +12,9 @@ namespace PokeSharp
         public double Peso { get; set; }
         public List<string> Golpes { get; set; }
         public byte[] Imagem { get; set; }
+        public byte[] ImagemShiny { get; set; }
 
-        public Pokemon(int id, string nome, List<string> tipo, double altura, double peso, List<string> golpes,byte[] Imagem)
+        public Pokemon(int id, string nome, List<string> tipo, double altura, double peso, List<string> golpes,byte[] Imagem, byte[] imagemShiny)
         {
             this.Id = id;
             this.Nome = nome;
@@ -22,6 +23,7 @@ namespace PokeSharp
             this.Peso = peso;
             this.Golpes = golpes;
             this.Imagem = Imagem;
+            this.ImagemShiny = imagemShiny;
         }
 
         public string deixarMaiusculo(string texto)

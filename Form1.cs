@@ -96,7 +96,7 @@ namespace PokeSharp
             if (pokemon != null)
             {
                 string tipos = "Tipos: ";
-                labelNome.Text = $"{pokemon.deixarMaiusculo(pokemon.Nome)}";
+                labelNome.Text = $"Nome: {pokemon.deixarMaiusculo(pokemon.Nome)}";
                 foreach (string tipo in pokemon.Tipo)
                 {
                     tipos += pokemon.deixarMaiusculo(tipo) + " ";
