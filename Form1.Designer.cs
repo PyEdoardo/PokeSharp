@@ -37,7 +37,7 @@
             labelAltura = new MaterialSkin.Controls.MaterialLabel();
             labelPeso = new MaterialSkin.Controls.MaterialLabel();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             materialCard1.SuspendLayout();
             SuspendLayout();
@@ -167,28 +167,20 @@
             materialCard1.Size = new Size(422, 281);
             materialCard1.TabIndex = 16;
             // 
-            // materialSwitch1
+            // comboBox1
             // 
-            materialSwitch1.AutoSize = true;
-            materialSwitch1.Depth = 0;
-            materialSwitch1.Location = new Point(625, 395);
-            materialSwitch1.Margin = new Padding(0);
-            materialSwitch1.MouseLocation = new Point(-1, -1);
-            materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialSwitch1.Name = "materialSwitch1";
-            materialSwitch1.Ripple = true;
-            materialSwitch1.Size = new Size(160, 37);
-            materialSwitch1.TabIndex = 17;
-            materialSwitch1.Text = "Tema Noturno";
-            materialSwitch1.UseVisualStyleBackColor = true;
-            materialSwitch1.CheckedChanged += materialSwitch1_CheckedChanged;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(629, 385);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 17;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(materialSwitch1);
+            Controls.Add(comboBox1);
             Controls.Add(materialCard1);
             Controls.Add(materialButton1);
             Controls.Add(materialLabel2);
@@ -204,7 +196,6 @@
         }
 
         #endregion
-        private Button button1;
         private MaterialSkin.Controls.MaterialTextBox textBoxNome;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
@@ -214,6 +205,6 @@
         private MaterialSkin.Controls.MaterialLabel labelAltura;
         private MaterialSkin.Controls.MaterialLabel labelPeso;
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialSwitch materialSwitch1;
+        private ComboBox comboBox1;
     }
 }

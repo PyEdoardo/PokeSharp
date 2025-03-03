@@ -32,8 +32,8 @@ namespace PokeSharp
                     int id = root.GetProperty("id").GetInt32();
                     string nomePokemon = $"Nome: {root.GetProperty("name").GetString()}";
                     double altura = root.GetProperty("height").GetDouble() / 10;
-                    double peso = root.GetProperty("weight").GetDouble() / 10;  
-
+                    double peso = root.GetProperty("weight").GetDouble() / 10;
+                    byte[] imagem;
                     List<string> tipos = new();
                     foreach (JsonElement typeElement in root.GetProperty("types").EnumerateArray())
                     {
@@ -53,7 +53,12 @@ namespace PokeSharp
 
                     string urlImagem = root.GetProperty("sprites").GetProperty("front_default").GetString();
 
-                    return new Pokemon(id, nomePokemon, tipos, altura, peso, golpes, urlImagem);
+                    using (var streamImg = Pokemon.BaixarImagem(urlImagem))
+                    {
+                        imagem = await streamImg;
+                    }
+
+                    return new Pokemon(id, nomePokemon, tipos, altura, peso, golpes, imagem);
                 }
             }
             catch (Exception ex)

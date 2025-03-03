@@ -1,12 +1,16 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.ComponentModel;
 using System.Net;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace PokeSharp
 {
     public partial class Form1 : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        private DB banco = new DB();
         public Form1()
         {
             InitializeComponent();
@@ -21,71 +25,96 @@ namespace PokeSharp
 
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialCard1.Visible = false;
+            this.Text = "Pokesharp";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void materialLabel1_Click(object sender, EventArgs e)
         {
 
         }
-        private void CarregarImagem(string url)
+        private async Task CarregarImagem(Pokemon pokemon)
         {
-            try
+            if (pokemon.Imagem != null)
             {
-                using (WebClient wc = new WebClient())
+                Console.WriteLine("Imagem Carregada");
+                using (var streamImagem = new MemoryStream(pokemon.Imagem))
                 {
-                    byte[] imagemBytes = wc.DownloadData(url);
-                    using (var ms = new System.IO.MemoryStream(imagemBytes))
-                    {
-                        pictureBox1.Image = Image.FromStream(ms);
-                    }
+                    pictureBox1.Image = Image.FromStream(streamImagem);
+                    Console.WriteLine("Imagem Carregada");
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar a imagem: " + ex.Message);
-            }
+        }
+
+        private void mostrarMaterialbar(string texto)
+        {
+            MaterialSnackBar aviso = new MaterialSnackBar(texto, 3000);
+            aviso.Show(this);
         }
 
         private async void materialButton1_Click(object sender, EventArgs e)
         {
             string NomePokemon = textBoxNome.Text.Trim().ToLower();
 
-            if (!string.IsNullOrWhiteSpace(NomePokemon))
+            if (string.IsNullOrWhiteSpace(NomePokemon))
+            {
+                mostrarMaterialbar("Caixa de Texto vazia, digite um pokemon");
+                return;
+            }
+
+            // Verifica se 'banco' está inicializado
+            if (banco == null)
+            {
+                mostrarMaterialbar("Erro: Banco de dados não inicializado.");
+                return;
+            }
+
+            Pokemon pokemon = banco.getPokemonNome(NomePokemon);
+
+            if (pokemon == null)
             {
                 Request request = new Request();
-                var pokemon = await request.GetPokemon(NomePokemon);
-                string tipos = "Tipos: ";
-                if (pokemon != null)
+                Pokemon pokemonSalvo = await request.GetPokemon(NomePokemon);
+
+                if (pokemonSalvo != null)
                 {
-                    labelNome.Text = $"{pokemon.deixarMaiusculo(pokemon.Nome)}";
-                    foreach (string tipo in pokemon.Tipo)
-                    {
-                        tipos += pokemon.deixarMaiusculo(tipo);
-                        Console.WriteLine($"Tipo adicionado na lista tipos");
-                    }
-                    labelAltura.Text = $"Altura: {pokemon.Altura.ToString()}m";
-                    labelPeso.Text = $"Peso: {pokemon.Peso.ToString()}kg";
-                    labelTipos.Text = tipos;
-                    CarregarImagem(pokemon.UrlImagem);
-                    materialCard1.Visible = true;
+                    banco.AdicionarPokemon(pokemonSalvo);
+                    mostrarMaterialbar("Pokemon Adicionado a Base de Dados Local");
+                    pokemon = pokemonSalvo;
                 }
                 else
                 {
-                    MaterialSnackBar avisoNaoEncontrado = new MaterialSnackBar("Pokémon não encontrado!", 3000);
-                    avisoNaoEncontrado.Show(this);
+                    mostrarMaterialbar("Nome de pokémon errado ou não existente, tente novamente");
+                    return;
                 }
+            }
+
+
+            if (pokemon != null)
+            {
+                string tipos = "Tipos: ";
+                labelNome.Text = $"{pokemon.deixarMaiusculo(pokemon.Nome)}";
+                foreach (string tipo in pokemon.Tipo)
+                {
+                    tipos += pokemon.deixarMaiusculo(tipo) + " ";
+                    Console.WriteLine($"Tipo adicionado na lista tipos");
+                }
+                labelAltura.Text = $"Altura: {pokemon.Altura}m";
+                labelPeso.Text = $"Peso: {pokemon.Peso}kg";
+                labelTipos.Text = tipos.Trim();
+
+                await CarregarImagem(pokemon);
+                materialCard1.Visible = true;
             }
             else
             {
-                MaterialSnackBar avisoNaoEncontrado = new MaterialSnackBar("Caixa de Texto vazia, digite um pokemon", 3000);
-                avisoNaoEncontrado.Show(this);
+                mostrarMaterialbar("Erro ao recuperar informações do Pokémon.");
             }
         }
+
 
         private void materialCard1_Paint(object sender, PaintEventArgs e)
         {
@@ -100,16 +129,9 @@ namespace PokeSharp
             }
         }
 
-        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
+        private void githubDoDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (materialSwitch1.Checked)
-            {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            }
-            else
-            {
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            }
+
         }
     }
 }
