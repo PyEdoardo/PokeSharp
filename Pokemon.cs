@@ -14,6 +14,8 @@ namespace PokeSharp
         public byte[] Imagem { get; set; }
         public byte[] ImagemShiny { get; set; }
 
+        public Pokemon() { }
+
         public Pokemon(int id, string nome, List<string> tipo, double altura, double peso, List<string> golpes,byte[] Imagem, byte[] imagemShiny)
         {
             this.Id = id;

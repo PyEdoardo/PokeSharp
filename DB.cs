@@ -21,7 +21,8 @@ namespace PokeSharp
                     Altura REAL NOT NULL,
                     Peso REAL NOT NULL,
                     Golpes TEXT NOT NULL,
-                    Imagem BLOB NOT NULL
+                    Imagem BLOB NOT NULL,
+                    ImagemShiny BLOB NOT NULL
                 )";
                 using (var comando = new SQLiteCommand(criarTabela, linkBanco))
                 {
@@ -38,8 +39,8 @@ namespace PokeSharp
                 using (var transaction = connection.BeginTransaction())
                 {
                     string insertQuery = @"
-                INSERT INTO Pokemon (Nome, Tipos, Altura, Peso, Golpes, Imagem) 
-                VALUES (@Nome, @Tipos, @Altura, @Peso, @Golpes, @Imagem)";
+                INSERT INTO Pokemon (Nome, Tipos, Altura, Peso, Golpes, Imagem, ImagemShiny) 
+                VALUES (@Nome, @Tipos, @Altura, @Peso, @Golpes, @Imagem, @ImagemShiny)";
 
                     using (var command = new SQLiteCommand(insertQuery, connection))
                     {
@@ -49,6 +50,7 @@ namespace PokeSharp
                         command.Parameters.AddWithValue("@Peso", pokemon.Peso);
                         command.Parameters.AddWithValue("@Golpes", string.Join(",", pokemon.Golpes));
                         command.Parameters.AddWithValue("@Imagem", pokemon.Imagem);
+                        command.Parameters.AddWithValue("@ImagemShiny", pokemon.ImagemShiny);
 
                         Console.WriteLine($"Inserindo Pokémon {pokemon.Nome} no banco...");
                         int rowsAffected = command.ExecuteNonQuery();
@@ -83,6 +85,29 @@ namespace PokeSharp
             }
         }
 
+        public List<string> GetPokemons()
+        {
+            List<string> pokemons = new();
+            using (var linkBanco = new SQLiteConnection(_stringConexao))
+            {
+                linkBanco.Open();
+                string queryGet = @"SELECT * FROM Pokemon";
+
+                using (var comando = new SQLiteCommand(queryGet, linkBanco))
+                {
+                    using (var leitor = comando.ExecuteReader())
+                    {
+                         while (leitor.Read())
+                        {
+                            string nome = leitor.GetString(leitor.GetOrdinal("Nome"));
+                            pokemons.Add(nome);
+                        }
+                        return pokemons;
+                    }
+                }
+            }
+        }
+
         public Pokemon getPokemonNome(string nomePokemon)
         {
             using (var linkBanco = new SQLiteConnection(_stringConexao))
@@ -106,7 +131,8 @@ namespace PokeSharp
                             double altura = leitor.GetDouble(4);
                             List<string> golpes = new List<string>(leitor.GetString(5).Split(','));
                             byte[] imagem = (byte[])leitor["Imagem"];
-                            Pokemon pokemonRetorno = new Pokemon(id, nome, tipos, peso, altura, golpes, imagem);
+                            byte[] imagemShiny = (byte[])leitor["ImagemShiny"];
+                            Pokemon pokemonRetorno = new Pokemon(id, nome, tipos, peso, altura, golpes, imagem, imagemShiny);
                             return pokemonRetorno;
                         }
                     }

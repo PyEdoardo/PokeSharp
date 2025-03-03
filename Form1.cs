@@ -2,6 +2,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace PokeSharp
 {
@@ -24,6 +25,11 @@ namespace PokeSharp
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialCard1.Visible = false;
             this.Text = "Pokesharp";
+            AutoCompleteStringCollection cachePokemons = new AutoCompleteStringCollection();
+            cachePokemons.AddRange(banco.GetPokemons().ToArray());
+            textBox1.AutoCompleteCustomSource = cachePokemons;
+            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            textBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,11 +44,22 @@ namespace PokeSharp
         {
             if (pokemon.Imagem != null)
             {
-                Console.WriteLine("Imagem Carregada");
                 using (var streamImagem = new MemoryStream(pokemon.Imagem))
                 {
                     pictureBox1.Image = Image.FromStream(streamImagem);
                     Console.WriteLine("Imagem Carregada");
+                }
+            }
+        }
+
+        private async Task CarregarImagemShiny(Pokemon pokemon)
+        {
+            if (pokemon.ImagemShiny != null)
+            {
+                using (var streamimagem = new MemoryStream(pokemon.ImagemShiny))
+                {
+                    pictureBox2.Image = Image.FromStream(streamimagem);
+                    Console.WriteLine("ImagemShiny Carregada");
                 }
             }
         }
@@ -55,7 +72,7 @@ namespace PokeSharp
 
         private async void materialButton1_Click(object sender, EventArgs e)
         {
-            string NomePokemon = textBoxNome.Text.Trim().ToLower();
+            string NomePokemon = textBox1.Text.Trim().ToLower();
 
             if (string.IsNullOrWhiteSpace(NomePokemon))
             {
@@ -105,8 +122,8 @@ namespace PokeSharp
                 labelAltura.Text = $"Altura: {pokemon.Altura}m";
                 labelPeso.Text = $"Peso: {pokemon.Peso}kg";
                 labelTipos.Text = tipos.Trim();
-
                 await CarregarImagem(pokemon);
+                await CarregarImagemShiny(pokemon);
                 materialCard1.Visible = true;
             }
             else
@@ -119,14 +136,6 @@ namespace PokeSharp
         private void materialCard1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void textBoxNome_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                materialButton1_Click(sender, e);
-            }
         }
 
         private void githubDoDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +166,14 @@ namespace PokeSharp
         {
             banco.apagarCache();
             Console.WriteLine("Pokemons Apagados");
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                materialButton1_Click(sender, e);
+            }
         }
     }
 }
