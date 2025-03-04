@@ -24,7 +24,7 @@ namespace PokeSharp
 
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialCard1.Visible = false;
-            this.Text = "Pokesharp";
+            this.Text = "Pokesharp ";
             AutoCompleteStringCollection cachePokemons = new AutoCompleteStringCollection();
             cachePokemons.AddRange(banco.GetPokemons().ToArray());
             textBox1.AutoCompleteCustomSource = cachePokemons;
